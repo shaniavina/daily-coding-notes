@@ -1,24 +1,25 @@
-"""
-Problem: Two Sum
-Date: 2026-04-21
-Difficulty: Easy
-Pattern: Hash Map
-
-Idea:
-Use a hash map to store seen numbers and their indices.
-For each number, check whether the complement has appeared.
-
-Time: O(n)
-Space: O(n)
-"""
-
 class Solution:
-    def twoSum(self, nums, target):
-        seen = {}
-        for i, num in enumerate(nums):
-            need = target - num
-            if need in seen:
-                return [seen[need], i]
-            seen[num] = i
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
 
-
+        i = 0
+        j = 0
+        res = []
+        while i < m or j < n:
+            if i < m and j < n:
+                if nums1[i] < nums2[j]:
+                    res.append(nums1[i])
+                    i += 1
+                else:
+                    res.append(nums2[j])
+                    j += 1
+            elif i < m:
+                res.append(nums1[i])
+                i += 1
+            elif j < n:
+                res.append(nums2[j])
+                j += 1
+        for x in range(0, m + n):
+            nums1[x] = res[x]

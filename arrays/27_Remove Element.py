@@ -1,21 +1,12 @@
-"""
-Problem: Two Sum
-Date: 2026-04-21
-Difficulty: Easy
-Pattern: Hash Map
-
-Idea:
-Use a hash map to store seen values and check complement.
-
-Time: O(n)
-Space: O(n)
-"""
-
 class Solution:
-    def twoSum(self, nums, target):
-        seen = {}
-        for i, num in enumerate(nums):
-            need = target - num
-            if need in seen:
-                return [seen[need], i]
-            seen[num] = i
+    def removeElement(self, nums: List[int], val: int) -> int:
+        i = len(nums) - 1
+        j = len(nums) - 1
+        while j >= 0:
+            if nums[j] == val:
+                nums[i], nums[j] = nums[j], nums[i]
+                i -= 1
+            j -= 1
+        return i + 1
+
+        ###double pointers solution
